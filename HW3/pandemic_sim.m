@@ -21,7 +21,7 @@ new_vax = zeros(T_FIN, 1);
 n_agents = size(W, 1);
 x = zeros(n_agents, 1);
 for i = 1:initial_infections
-    j = randi(n_agents);
+    j = randsample(find(x ~= 1), 1);
     x(j) = 1;
 end
 
