@@ -14,7 +14,7 @@ function RMSE = RMSE_p(x, N, W)
     avg_I = zeros(N, T_FIN);
     
     parfor n = 1:N
-        [~, ~, ~, avg_I(n,:), ~] = pandemic_sim(W, T_FIN, initial_infections, beta, rho, vaccines);
+        avg_I(n,:) = pand_sim_for_parameters(W, T_FIN, initial_infections, vaccines, beta, rho);
     end
     avg_I = sum(avg_I, 1)/N;
     RMSE = sqrt(1/T_FIN * sum((ground_truth - avg_I).^2));
